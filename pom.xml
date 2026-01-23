@@ -29,27 +29,6 @@
 	<properties>
 		<java.version>17</java.version>
 	</properties>
-	<build>
-		<plugins>
-
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
-					<mainClass>com.springprojects.banking_application.BankingApplication</mainClass>
-				</configuration>
-				<executions>
-					<execution>
-						<goals>
-							<goal>repackage</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-
-		</plugins>
-	</build>
-
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -109,33 +88,72 @@
 		</dependency>
 	</dependencies>
 
+<!--	<build>-->
+<!--		<plugins>-->
+<!--			<plugin>-->
+<!--				<groupId>org.apache.maven.plugins</groupId>-->
+<!--				<artifactId>maven-compiler-plugin</artifactId>-->
+
+
+<!--&lt;!&ndash;				<configuration>&ndash;&gt;-->
+<!--&lt;!&ndash;					<annotationProcessorPaths>&ndash;&gt;-->
+<!--&lt;!&ndash;						<path>&ndash;&gt;-->
+<!--&lt;!&ndash;							<groupId>org.projectlombok</groupId>&ndash;&gt;-->
+<!--&lt;!&ndash;							<artifactId>lombok</artifactId>&ndash;&gt;-->
+<!--&lt;!&ndash;						</path>&ndash;&gt;-->
+<!--&lt;!&ndash;					</annotationProcessorPaths>&ndash;&gt;-->
+<!--&lt;!&ndash;				</configuration>&ndash;&gt;-->
+<!--&lt;!&ndash;			</plugin>&ndash;&gt;-->
+<!--&lt;!&ndash;			<plugin>&ndash;&gt;-->
+<!--&lt;!&ndash;				<groupId>org.springframework.boot</groupId>&ndash;&gt;-->
+<!--&lt;!&ndash;				<artifactId>spring-boot-maven-plugin</artifactId>&ndash;&gt;-->
+<!--&lt;!&ndash;				<configuration>&ndash;&gt;-->
+<!--&lt;!&ndash;					<excludes>&ndash;&gt;-->
+<!--&lt;!&ndash;						<exclude>&ndash;&gt;-->
+<!--&lt;!&ndash;							<groupId>org.projectlombok</groupId>&ndash;&gt;-->
+<!--&lt;!&ndash;							<artifactId>lombok</artifactId>&ndash;&gt;-->
+<!--&lt;!&ndash;						</exclude>&ndash;&gt;-->
+<!--&lt;!&ndash;					</excludes>&ndash;&gt;-->
+<!--&lt;!&ndash;				</configuration>&ndash;&gt;-->
+<!--			</plugin>-->
+<!--			<plugin>&ndash;&gt;-->
+<!--							<groupId>org.springframework.boot</groupId>-->
+<!--							<artifactId>spring-boot-maven-plugin</artifactId>-->
+<!--							<configuration>-->
+<!--								<mainClass>com.springprojects.banking_application.BankingApplication</mainClass>-->
+<!--							</configuration>-->
+<!--							<executions>-->
+<!--								<execution>-->
+<!--									<goals>-->
+<!--										<goal>repackage</goal>-->
+<!--									</goals>-->
+<!--								</execution>-->
+<!--							</executions>-->
+<!--			</plugin>-->
+<!--		</plugins>-->
+<!--	</build>-->
+
 	<build>
 		<plugins>
+
+			<!-- Spring Boot executable (fat) JAR -->
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-<!--				<configuration>-->
-<!--					<annotationProcessorPaths>-->
-<!--						<path>-->
-<!--							<groupId>org.projectlombok</groupId>-->
-<!--							<artifactId>lombok</artifactId>-->
-<!--						</path>-->
-<!--					</annotationProcessorPaths>-->
-<!--				</configuration>-->
-<!--			</plugin>-->
-<!--			<plugin>-->
-<!--				<groupId>org.springframework.boot</groupId>-->
-<!--				<artifactId>spring-boot-maven-plugin</artifactId>-->
-<!--				<configuration>-->
-<!--					<excludes>-->
-<!--						<exclude>-->
-<!--							<groupId>org.projectlombok</groupId>-->
-<!--							<artifactId>lombok</artifactId>-->
-<!--						</exclude>-->
-<!--					</excludes>-->
-<!--				</configuration>-->
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<mainClass>com.springprojects.banking_application.BankingApplication</mainClass>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
+
 		</plugins>
 	</build>
+
 
 </project>
