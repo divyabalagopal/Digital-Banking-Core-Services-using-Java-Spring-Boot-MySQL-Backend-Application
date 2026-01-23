@@ -92,7 +92,13 @@ public class UserServiceImpl implements UserService{
                 .accountInfo(AccountInfo.builder()
                         .accountBalance(foundUser.getAccountBalance())
                         .accountNumber(enquiryRequest.getAccountNumber())
-                        .accountName(STR."\{foundUser.getFirstName()} \{foundUser.getLastName()} \{foundUser.getOtherName()}")
+                        .accountName(String.format(
+                                "%s %s %s",
+                                foundUser.getFirstName(),
+                                foundUser.getLastName(),
+                                foundUser.getOtherName()
+                        )
+)
                         .build()).build();
     }
 
@@ -107,8 +113,11 @@ public class UserServiceImpl implements UserService{
         }
 
         User foundUser = userRepo.findByAccountNumber(enquiryRequest.getAccountNumber());
-        return STR."\{foundUser.getFirstName()} \{foundUser.getLastName()} \{foundUser.getOtherName()}";
-        
+        return foundUser.getFirstName() + " " +
+                foundUser.getLastName() + " " +
+                foundUser.getOtherName();
+
+
     }
 
     @Override
@@ -143,7 +152,14 @@ public class UserServiceImpl implements UserService{
                 .responseCode(AccountUtils.ACCOUNT_CREDIT_SUCCESS)
                 .responseMessage(AccountUtils.ACCOUNT_CREDIT_SUCCESS_MESSAGE)
                 .accountInfo(AccountInfo.builder()
-                        .accountName(STR."\{creditToUserAccount.getFirstName()} \{creditToUserAccount.getLastName()} \{creditToUserAccount.getOtherName()}")
+                        .accountName(
+                                String.format(
+                                        "%s %s %s",
+                                        creditToUserAccount.getFirstName(),
+                                        creditToUserAccount.getLastName(),
+                                        creditToUserAccount.getOtherName()
+                                )
+                        )
                         .accountNumber(creditToUserAccount.getAccountNumber())
                         .accountBalance(creditToUserAccount.getAccountBalance()).build())
                 .build();
@@ -171,7 +187,11 @@ public class UserServiceImpl implements UserService{
                     .responseCode(AccountUtils.ACCOUNT_DEBIT_FAILED_CODE)
                     .responseMessage(AccountUtils.ACCOUNT_DEBIT_FAILED_MESSAGE)
                     .accountInfo(AccountInfo.builder()
-                            .accountName(STR."\{debitFromUserAccount.getFirstName()} \{debitFromUserAccount.getLastName()} \{debitFromUserAccount.getOtherName()}")
+                            .accountName(
+                                    debitFromUserAccount.getFirstName() + " " +
+                                            debitFromUserAccount.getLastName() + " " +
+                                            debitFromUserAccount.getOtherName()
+                            )
                             .accountBalance(debitFromUserAccount.getAccountBalance())
                             .accountNumber(debitRequestDTO.getAccountNumber())
                             .build())
@@ -190,7 +210,14 @@ public class UserServiceImpl implements UserService{
                     .responseCode("500")
                     .accountInfo(AccountInfo.builder()
                             .accountNumber(debitRequestDTO.getAccountNumber())
-                            .accountName(STR."\{debitFromUserAccount.getFirstName()} \{debitFromUserAccount.getLastName()}\{debitFromUserAccount.getOtherName()}")
+                            .accountName(
+                                    String.format(
+                                            "%s %s %s",
+                                            debitFromUserAccount.getFirstName(),
+                                            debitFromUserAccount.getLastName(),
+                                            debitFromUserAccount.getOtherName()
+                                    )
+                            )
                             .accountBalance(debitFromUserAccount.getAccountBalance())
                             .build())
                     .build();
@@ -214,7 +241,11 @@ public class UserServiceImpl implements UserService{
                 .responseCode(AccountUtils.ACCOUNT_DEBIT_SUCCESS_CODE)
                 .responseMessage(AccountUtils.ACCOUNT_DEBIT_SUCCESS_MESSAGE)
                 .accountInfo(AccountInfo.builder()
-                        .accountName(STR."\{debitFromUserAccount.getFirstName()} \{debitFromUserAccount.getLastName()} \{debitFromUserAccount.getOtherName()}")
+                        .accountName(
+                                debitFromUserAccount.getFirstName() + " " +
+                                        debitFromUserAccount.getLastName() + " " +
+                                        debitFromUserAccount.getOtherName()
+                        )
                         .accountBalance(debitFromUserAccount.getAccountBalance())
                         .accountNumber(debitRequestDTO.getAccountNumber())
                         .build())
@@ -257,7 +288,11 @@ public class UserServiceImpl implements UserService{
                     .responseCode("500")
                     .accountInfo(AccountInfo.builder()
                             .accountNumber(transfer.getAccountNumberTransferredFrom())
-                            .accountName(STR."\{sourceAccountUser.getFirstName()} \{sourceAccountUser.getLastName()}\{sourceAccountUser.getOtherName()}")
+                            .accountName(
+                                    sourceAccountUser.getFirstName() + " " +
+                                            sourceAccountUser.getLastName() + " " +
+                                            sourceAccountUser.getOtherName()
+                            )
                             .accountBalance(sourceAccountUser.getAccountBalance())
                             .build())
                     .build();
@@ -275,8 +310,9 @@ public class UserServiceImpl implements UserService{
         EmailDetailsDTO alertEmailforDebit = EmailDetailsDTO.builder()
                 .subject("DEBIT ALERT")
                 .recipient(sourceAccountUser.getEmail())
-                .messageBody(STR."Amount: \{transfer.getAmount()}has been deducted from your account.")
-                .build();
+                .messageBody(
+                        "Amount: " + transfer.getAmount() + " has been deducted from your account."
+                ).build();
 
         //call the email service and send an email to the user
         emailService.sendEmailAlert(alertEmailforDebit);
@@ -315,8 +351,9 @@ public class UserServiceImpl implements UserService{
         EmailDetailsDTO alertEmailForCredit = EmailDetailsDTO.builder()
                 .subject("CREDIT ALERT")
                 .recipient(destinationAccountNumber.getEmail())
-                .messageBody(STR."Amount: \{transfer.getAmount()}has been credited to your account.")
-                .build();
+                .messageBody(
+                        "Amount: " + transfer.getAmount() + " has been credited to your account."
+                ).build();
 
         //call the email service and send an email to the user
         emailService.sendEmailAlert(alertEmailForCredit);
