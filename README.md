@@ -15,7 +15,7 @@ Backend Framework:
 - Maven for dependency management
 
 Database and Persistence:
-- MySQL database
+- PostgreSQL database
 - Hibernate ORM for data mapping
 - JPA repositories for data access
 

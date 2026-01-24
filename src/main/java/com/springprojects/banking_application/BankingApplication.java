@@ -12,7 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @OpenAPIDefinition(
 		info = @Info(
 				title="Banking Application",
-				description = "Backend Banking application using Java, Spring Boot, Spring Data JPA, MySQL DB, API documentation with Swagger",
+				description = "Backend Banking application using Java, Spring Boot, Spring Data JPA, PostgreSQL DB, API documentation with Swagger",
 				version = "v1.0",
 				contact = @Contact(
 						name ="Divya B",
