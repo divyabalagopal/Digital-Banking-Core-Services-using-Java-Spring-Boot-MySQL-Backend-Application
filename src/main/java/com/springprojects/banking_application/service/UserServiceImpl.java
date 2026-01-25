@@ -2,7 +2,7 @@ package com.springprojects.banking_application.service;
 
 import com.springprojects.banking_application.dto.*;
 import com.springprojects.banking_application.entity.User;
-import com.springprojects.banking_application.repository.userRepo;
+import com.springprojects.banking_application.repository.UserRepo;
 import com.springprojects.banking_application.utils.AccountUtils;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,7 @@ import java.math.BigDecimal;
 public class UserServiceImpl implements UserService{
 
     @Autowired
-    userRepo userRepo;
+    UserRepo userRepo;
 
     @Autowired
     TransactionService transactionService;

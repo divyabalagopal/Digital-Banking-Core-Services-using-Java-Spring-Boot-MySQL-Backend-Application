@@ -4,6 +4,7 @@ import com.springprojects.banking_application.dto.*;
 import com.springprojects.banking_application.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +24,7 @@ public class UserController {
             description = "HTTP status 200 CREATED"
     )
     @PostMapping("/newUser")
-    public BankResponseDTO createAccount(@RequestBody UserRequestDTO userRequestDTO)
+    public BankResponseDTO createAccount(@Valid @RequestBody UserRequestDTO userRequestDTO)
     {
         return userService.createAccount(userRequestDTO);
     }
