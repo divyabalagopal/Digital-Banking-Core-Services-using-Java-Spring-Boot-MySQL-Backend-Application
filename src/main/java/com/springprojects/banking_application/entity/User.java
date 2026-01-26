@@ -1,5 +1,7 @@
 package com.springprojects.banking_application.entity;
 
+import com.springprojects.banking_application.enums.Gender;
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -19,12 +21,16 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false)
     private String firstName;
     private String lastName;
 
     private String otherName;
 
-    private String gender;
+   @Enumerated(EnumType.STRING)
+   @Column(nullable = false)
+    private Gender gender;
 
     private String address;
 
