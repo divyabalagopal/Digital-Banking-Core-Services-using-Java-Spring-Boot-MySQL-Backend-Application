@@ -54,7 +54,7 @@ Setup Steps:
 6. Start the application using Maven Spring Boot plugin
 
 Database Setup:
-Create a MySQL database for the application and update connection properties with appropriate credentials. The application will automatically create required tables based on JPA entity annotations when first started.
+Create a PostgreSQL database for the application and update connection properties with appropriate credentials. The application will automatically create required tables based on JPA entity annotations when first started.
 
 Development Approach
 
