@@ -30,7 +30,7 @@ import org.slf4j.LoggerFactory;
 
 @Component
 @AllArgsConstructor
-public class BankStatementImpl {
+public class BankStatementImpl{
 
     /**
      * Retreieve the list of trasactions within a date range,

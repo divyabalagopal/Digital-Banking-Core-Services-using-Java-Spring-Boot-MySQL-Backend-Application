@@ -6,6 +6,9 @@ import com.springprojects.banking_application.repository.UserRepo;
 import com.springprojects.banking_application.utils.AccountUtils;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -365,5 +368,10 @@ public class UserServiceImpl implements UserService{
                         .accountNumber(sourceAccountUser.getAccountNumber())
                         .accountBalance(sourceAccountUser.getAccountBalance())
                         .build()).build();
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 }
