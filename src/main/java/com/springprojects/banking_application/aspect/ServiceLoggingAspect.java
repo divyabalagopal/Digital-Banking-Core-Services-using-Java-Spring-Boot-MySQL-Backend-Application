@@ -1,6 +1,6 @@
 package com.springprojects.banking_application.aspect;
 
-import com.itextpdf.text.log.LoggerFactory;
+import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -12,7 +12,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class ServiceLoggingAspect {
 
-    private static final Logger log = (Logger) LoggerFactory.getLogger(ServiceLoggingAspect.class);
+    private static final Logger log =
+            LoggerFactory.getLogger(ServiceLoggingAspect.class);
 
     // POINTCUT: which methods do I care about?
     // "Any method, in any class, inside the service package"

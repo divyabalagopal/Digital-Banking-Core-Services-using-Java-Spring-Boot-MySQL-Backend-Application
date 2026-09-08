@@ -1,4 +1,4 @@
-package com.springprojects.banking_application.Tests;
+package com.springprojects.banking_application.banking_application;
 
 import com.springprojects.banking_application.dto.BankResponseDTO;
 import com.springprojects.banking_application.dto.UserRequestDTO;
